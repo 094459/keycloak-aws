@@ -7,7 +7,7 @@ import aws_cdk.aws_ecs as ecs
 from cdk_keycloak import KeyCloak, KeycloakVersion
 
 app = cdk.App()
-env = cdk.Environment(region="eu-west-1", account="{replacewithyourawsaccount}")
+env = cdk.Environment(region="{replacewithyourawsregion}", account="{replacewithyourawsaccount}")
 
 stack = cdk.Stack(app, "keycloak-demo", env=env)
 
