@@ -1,14 +1,14 @@
-## Installing KeyCloak on AWS
+## Installing Keycloak on AWS
 
-This repo contains code to help you use the AWS CDK cdk-keycloak construct to deploy newer/later versions KeyCloak (v17 onwards) on AWS. 
+This repo contains code to help you use the AWS CDK cdk-keycloak construct to deploy newer/later versions Keycloak (v17 onwards) on AWS. 
 
-To use this repo you will need to create a certificate in Amazon Certificate Manager. You will need to have the Arn for this certificate so make sure you complete this before proceeding. You will also need the ability to update the DNS record for that certificate later on once the KeyCloak ECS cluster has deployed, so make sure you are able to do that to.
+To use this repo you will need to create a certificate in Amazon Certificate Manager. You will need to have the Arn for this certificate so make sure you complete this before proceeding. You will also need the ability to update the DNS record for that certificate later on once the Keycloak ECS cluster has deployed, so make sure you are able to do that to.
 
 To deploy follow these steps:
 
-1. The first thing you need to do is build your custom KeyCloak container image. To help you there is a script in the docker directory called build.sh. BEFORE you run this however, you need to download and copy into the "providers" folder a bunch of jar files. The README file in the providers folder has helpful links.
+1. The first thing you need to do is build your custom Keycloak container image. To help you there is a script in the docker directory called build.sh. BEFORE you run this however, you need to download and copy into the "providers" folder a bunch of jar files. The README file in the providers folder has helpful links.
 
-2. Once you have downloaded the jar files into the providers folder, you should review the Docker file and make sure it fits your needs (for example, the version of KeyCloak you want to use)
+2. Once you have downloaded the jar files into the providers folder, you should review the Docker file and make sure it fits your needs (for example, the version of Keycloak you want to use)
 
 3. You are now ready to run the build script. Review and update the script to include the info about your AWS environment. Once you have updated this, run the build script which will build, tag and then push a container image to your Amazon ECR repo. This  might take a while depending on the speed of your internet.
 
@@ -19,7 +19,7 @@ To deploy follow these steps:
 * update {replacewithyourawsregion} and {replacewithyourawsaccount} to reflect your AWS Account
 * update {replacewithyourcertificatearn} with the Certificate Arn you created at the beginning
 * update {replacewithyourcustomdns} with the domain name you used for your certificate (for example, my-keycloak.demo.com)
-* update {replacewithyourecrcontainerimage} with the URI for your custom KeyCloak container image you creatd in step 4
+* update {replacewithyourecrcontainerimage} with the URI for your custom Keycloak container image you creatd in step 4
 
 Once you have updated, save the file.
 
@@ -45,6 +45,6 @@ arn:aws:cloudformation:eu-west-1:xxxxxx:stack/keycloak-demo/9a6e8260-045c-11ee-b
 ✨  Total time: 1025.66s
 ```
 
-7. Use the info from the output above (keycloak-demo.KeyCloakKeyCloakContainerSerivceEndpointxxxxxx) to update the DNS record for the certificate you created. Create a CNAME record pointing the ELB to the domain record. This will allow you to access KeyCloak via a simple link like  "https://my-keycloak.demo.com"
+7. Use the info from the output above (keycloak-demo.KeyCloakKeyCloakContainerSerivceEndpointxxxxxx) to update the DNS record for the certificate you created. Create a CNAME record pointing the ELB to the domain record. This will allow you to access Keycloak via a simple link like  "https://my-keycloak.demo.com"
 
-8. Congratulations, with a bit of luck you should now have a KeyCloak service up and running.
+8. Congratulations, with a bit of luck you should now have a Keycloak service up and running.
