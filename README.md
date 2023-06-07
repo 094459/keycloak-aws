@@ -1,6 +1,6 @@
 ## Installing Keycloak on AWS
 
-This repo contains code to help you use the AWS CDK cdk-keycloak construct to deploy newer/later versions Keycloak (v17 onwards) on AWS. 
+This repo contains code to help you use the AWS CDK cdk-keycloak construct to deploy newer/later versions Keycloak (v17 onwards) on AWS. [This blog post](https://blog.beachgeek.co.uk/keycloak-on-aws-part-one/) walks you through how to use it in more details, but the following is a quickstart for those who know just enough to be dangerous ;-)
 
 To use this repo you will need to create a certificate in Amazon Certificate Manager. You will need to have the Arn for this certificate so make sure you complete this before proceeding. You will also need the ability to update the DNS record for that certificate later on once the Keycloak ECS cluster has deployed, so make sure you are able to do that to.
 
